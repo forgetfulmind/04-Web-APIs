@@ -1,5 +1,4 @@
 //indexpage callouts:
-
 //call out id#submit as variable for start quiz button
 var startButton = document.querySelector("#start")
 //call out id#start-screen as variable for start screen div
@@ -20,10 +19,9 @@ var finalScore = document.querySelector("#final-score")
 var intialsInput = document.querySelector("#initials")
 
 //Highscorespage callouts:
-
 //call out id#highscores for high score list
 var highScores = document.querySelector("#highscores")
-
+              
 
 
 //logic of pages: 
@@ -32,11 +30,15 @@ var highScores = document.querySelector("#highscores")
         //Question screen title filled with first question 
 
 //create questions array
-var quizQuestions = ["Commonly Used data types DO NOT include:","dance?","fart?"]
+var quizQuestions = ["Commonly Used data types DO NOT include:",
+                     "The condition in an if/else statment is enclosed within _____.",
+                     "Arrays in JavaScript can be used to store _____.",
+                     "String values must be enclosed within ______ when being assigned to variables."]
+
+                     //first question and answer screen
 let questionOne = quizQuestions[0]
 questionTitle.textContent = questionOne
 
-//Choices div filled with four buttons 
 firstAnswerSet();
 //create answers array number one
 function firstAnswerSet(){
@@ -46,16 +48,115 @@ function buildButtons() {
            var btn = document.createElement("button");
            var t = document.createTextNode(answerList1[i]);
            btn.appendChild(t);
-           btn.className = answerList1[i]
+           btn.id = answerList1[i]
            choiceList.appendChild(btn);
         }
     }
 buildButtons();
+let q1a1 = document.getElementById(answerList1[0]);
+let q1a2 = document.getElementById(answerList1[1]);
+let q1a3 = document.getElementById(answerList1[2]);
+let q1a4 = document.getElementById(answerList1[3]);
+q1a1.addEventListener("click", wrongAnswer);
+q1a2.addEventListener("click", wrongAnswer);
+q1a3.addEventListener("click", rightAnswer);
+q1a4.addEventListener("click", wrongAnswer);
 }
+
+//second question and answer screen
+function questionTwo(){
+        let questionTwo = quizQuestions[1]
+        questionTitle.textContent = questionTwo
+        secondAnswerSet();
+}
+
+function secondAnswerSet(){
+        choiceList.textContent = ""
+        var answerList1 = ["quotes","curly brackets","parentheses","square brackets"]
+        function buildButtons() {
+                for (var i = 0; i < answerList1.length; i++) {
+                   var btn = document.createElement("button");
+                   var t = document.createTextNode(answerList1[i]);
+                   btn.appendChild(t);
+                   btn.id = answerList1[i]
+                   choiceList.appendChild(btn);
+                }
+            }
+        buildButtons();
+        let q2a1 = document.getElementById(answerList1[0]);
+        let q2a2 = document.getElementById(answerList1[1]);
+        let q2a3 = document.getElementById(answerList1[2]);
+        let q2a4 = document.getElementById(answerList1[3]);
+        q2a1.addEventListener("click", wrongAnswer2);
+        q2a2.addEventListener("click", wrongAnswer2);
+        q2a3.addEventListener("click", rightAnswer2);
+        q2a4.addEventListener("click", wrongAnswer2);
+        }
+
+//third question and answer screen
+function questionThree(){
+        let questionThree = quizQuestions[2]
+        questionTitle.textContent = questionThree
+        thirdAnswerSet();
+}
+
+function thirdAnswerSet(){
+        choiceList.textContent = ""
+        var answerList1 = ["numbers and strings","other arrays","booleans","all of the above"]
+        function buildButtons() {
+                for (var i = 0; i < answerList1.length; i++) {
+                   var btn = document.createElement("button");
+                   var t = document.createTextNode(answerList1[i]);
+                   btn.appendChild(t);
+                   btn.id = answerList1[i]
+                   choiceList.appendChild(btn);
+                }
+            }
+        buildButtons();
+        let q3a1 = document.getElementById(answerList1[0]);
+        let q3a2 = document.getElementById(answerList1[1]);
+        let q3a3 = document.getElementById(answerList1[2]);
+        let q3a4 = document.getElementById(answerList1[3]);
+        q3a1.addEventListener("click", wrongAnswer3);
+        q3a2.addEventListener("click", wrongAnswer3);
+        q3a3.addEventListener("click", wrongAnswer3);
+        q3a4.addEventListener("click", rightAnswer3);
+        }
+//fourth question and answer screen
+function questionFour(){
+        let questionFour = quizQuestions[3]
+        questionTitle.textContent = questionFour
+        fourthAnswerSet();
+}
+
+function fourthAnswerSet(){
+        choiceList.textContent = ""
+        var answerList1 = ["commas","curly brackets","quotes","parentheses"]
+        function buildButtons() {
+                for (var i = 0; i < answerList1.length; i++) {
+                   var btn = document.createElement("button");
+                   var t = document.createTextNode(answerList1[i]);
+                   btn.appendChild(t);
+                   btn.id = answerList1[i]
+                   choiceList.appendChild(btn);
+                }
+            }
+        buildButtons();
+        let q3a1 = document.getElementById(answerList1[0]);
+        let q3a2 = document.getElementById(answerList1[1]);
+        let q3a3 = document.getElementById(answerList1[2]);
+        let q3a4 = document.getElementById(answerList1[3]);
+        q3a1.addEventListener("click", wrongAnswer4);
+        q3a2.addEventListener("click", wrongAnswer4);
+        q3a3.addEventListener("click", rightAnswer4);
+        q3a4.addEventListener("click", wrongAnswer4);
+        }
 
 //when I click the start button I want to 
 startButton.addEventListener("click", startQuiz);
+
 function startQuiz(){
+        localStorage.setItem("score", 0);
         setTimer();
         hideStart();
         showQuestions();
@@ -80,29 +181,126 @@ function setTimer(){
                         finalScreen();
                 }
         },1000)
+
 }
 
-//when I click an answer button it advances to the next question screen
-        //use the DOM to replace the contents of the question title and choices divs
+//Answer Button Functionality
+//ADD POINT
+function addPoint() {
+        let score = parseInt(localStorage.getItem("score"))
+        localStorage.setItem("score", ++score);
+}
+//TIME PENALTY
+function timePenalty(){
+        //subtract from running interval
+}
+//POP UP WRONG 
 
-    //if the answer is correct 
-        //I want to add a point to the user's score 
-        //I want to pop up a temporary text under the wrapper of "correct!"
+//POP UP CORRECT
 
-    //if the answer is wrong
-        //I want to subtract time from the clock 
+//FIRST SET 
+    //if the answer in first set is correct 
+function rightAnswer(){
+        console.log("right!")
+        addPoint();
+        questionTwo();
+}
+    //I want to pop up a temporary text under the wrapper of "correct!"
+               
+//if the answer is wrong
+function wrongAnswer(){
+        console.log("wrong!")
+        timePenalty();
+        questionTwo();
+}
+//I want to subtract time from the clock 
         //I want to pop up a temporary text under the wrapper of "wrong!"
+
+//END FIRST SET
+
+//SECOND SET 
+    //if the answer in first set is correct 
+    function rightAnswer2(){
+        console.log("right!")
+        addPoint();
+        questionThree();
+}
+        //I want to pop up a temporary text under the wrapper of "correct!"
+               
+//if the answer is wrong
+function wrongAnswer2(){
+        console.log("wrong!")
+        timePenalty();
+        questionThree();
+
+}
+//I want to subtract time from the clock 
+        //I want to pop up a temporary text under the wrapper of "wrong!"
+//END SECOND SET
+
+//THIRD SET 
+    //if the answer in first set is correct 
+    function rightAnswer3(){
+        console.log("right!")
+        addPoint();
+        questionFour();
+}
+        //I want to pop up a temporary text under the wrapper of "correct!"
+               
+
+//if the answer is wrong
+function wrongAnswer3(){
+        console.log("wrong!")
+        timePenalty();
+        questionFour();
+
+}
+//I want to subtract time from the clock 
+        //I want to pop up a temporary text under the wrapper of "wrong!"
+//END THIRD SET
+
+//FOURTH SET 
+    //if the answer in first set is correct 
+function rightAnswer4(){
+        console.log("right!")
+        addPoint();
+        finalScreen();
+}
+        //I want to pop up a temporary text under the wrapper of "correct!"
+               
+
+//if the answer is wrong
+function wrongAnswer4(){
+        console.log("wrong!")
+        timePenalty();
+        finalScreen();
+
+}
+//I want to subtract time from the clock 
+        //I want to pop up a temporary text under the wrapper of "wrong!"
+//END FOURTH SET
+
+
+//Clear Timer
+function clearTimer() {
+        timeClock.textContent = 2;
+}
 
 //If all the questions are answered OR timer reaches zero I want to 
         //hide questions screen
         //show final score screen 
 function finalScreen(){
+        clearTimer();
+        scoreBoard();
         questionScreen.className = "hide"
         endScreen.className = "start"
 }
 
 //On final score screen
         //I want to fill the final-score div with the user's score 
+function scoreBoard(){
+        finalScore.textContent = localStorage.getItem('score')
+}
 
 //When submit is pushed I want to
         //add initials to user's score 
