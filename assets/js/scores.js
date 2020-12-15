@@ -10,6 +10,7 @@ clearScores.addEventListener("click", clearHighScores)
 //clear scores button wipe list 
 function clearHighScores(){
     highScores.textContent = ""
+    localStorage.clear();
 }
 
 //add initials and score from local storage
@@ -17,8 +18,10 @@ function addScore() {
     let score = document.createElement('li')
     let userName = localStorage.getItem("userName")
     let highScore = localStorage.getItem("score")
+    if (userName != "null" && highScore != "null"){
     score.textContent = userName + " - " + highScore
     highScores.appendChild(score)
+    } 
 }
 
 //populate page with scores 

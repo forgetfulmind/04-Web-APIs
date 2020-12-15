@@ -287,6 +287,7 @@ function userName(){
         console.log(initialsInput.length)
         if (parseInt(initialsInput.length) <= 3){
         localStorage.setItem("userName", initialsInput)
+  //go to highscores page 
         window.location.href = "./highscores.html"
         //addScore()
         } else {
@@ -294,22 +295,8 @@ function userName(){
                 initialsInput = ""
         }
 }
-        //add all user data [initials + score] to list on highscores screen
-//function addScore() {
-//        let score = document.createElement("li")
-//        let userName = localStorage.getItem("userName")
-//        let highScore = localStorage.getItem("score")
-//        score = userName + "-" + highScore
-//        highScores.appendChild(score)
-//        clearScores.addEventListener("click", clearHighScores)
-//}
-        //hide final score screen
-        //go to highscores page 
-
-//On highscorepage when I click go back I go to index page
-//On highscore page when I click clear highscores it deletes list items
 
 
-//clear local storage 
+//clear local storage on page load
 localStorage.clear();
     
