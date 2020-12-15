@@ -43,19 +43,22 @@ let questionOne = quizQuestions[0]
 questionTitle.textContent = questionOne
 
 firstAnswerSet();
-//create answers array number one
-function firstAnswerSet(){
-var answerList1 = ["strings","booleans","alerts","numbers"]
-function buildButtons() {
-        for (var i = 0; i < answerList1.length; i++) {
+
+//Function for building buttons 
+function buildButtons(build) {
+        for (var i = 0; i < build.length; i++) {
            var btn = document.createElement("button");
-           var t = document.createTextNode(answerList1[i]);
+           var t = document.createTextNode(build[i]);
            btn.appendChild(t);
-           btn.id = answerList1[i]
+           btn.id = build[i];
            choiceList.appendChild(btn);
         }
     }
-        buildButtons();
+
+//create answers array number one
+function firstAnswerSet(){
+var answerList1 = ["strings","booleans","alerts","numbers"]
+        buildButtons(answerList1);
         let q1a1 = document.getElementById(answerList1[0]);
         let q1a2 = document.getElementById(answerList1[1]);
         let q1a3 = document.getElementById(answerList1[2]);
@@ -75,21 +78,12 @@ function questionTwo(){
 
 function secondAnswerSet(){
         choiceList.textContent = ""
-        var answerList1 = ["quotes","curly brackets","parentheses","square brackets"]
-        function buildButtons() {
-                for (var i = 0; i < answerList1.length; i++) {
-                   var btn = document.createElement("button");
-                   var t = document.createTextNode(answerList1[i]);
-                   btn.appendChild(t);
-                   btn.id = answerList1[i]
-                   choiceList.appendChild(btn);
-                }
-            }
-        buildButtons();
-        let q2a1 = document.getElementById(answerList1[0]);
-        let q2a2 = document.getElementById(answerList1[1]);
-        let q2a3 = document.getElementById(answerList1[2]);
-        let q2a4 = document.getElementById(answerList1[3]);
+        var answerList2 = ["quotes","curly brackets","parentheses","square brackets"]
+        buildButtons(answerList2);
+        let q2a1 = document.getElementById(answerList2[0]);
+        let q2a2 = document.getElementById(answerList2[1]);
+        let q2a3 = document.getElementById(answerList2[2]);
+        let q2a4 = document.getElementById(answerList2[3]);
         q2a1.addEventListener("click", wrongAnswer2);
         q2a2.addEventListener("click", wrongAnswer2);
         q2a3.addEventListener("click", rightAnswer2);
@@ -105,21 +99,12 @@ function questionThree(){
 
 function thirdAnswerSet(){
         choiceList.textContent = ""
-        var answerList1 = ["numbers and strings","other arrays","booleans","all of the above"]
-        function buildButtons() {
-                for (var i = 0; i < answerList1.length; i++) {
-                   var btn = document.createElement("button");
-                   var t = document.createTextNode(answerList1[i]);
-                   btn.appendChild(t);
-                   btn.id = answerList1[i]
-                   choiceList.appendChild(btn);
-                }
-            }
-        buildButtons();
-        let q3a1 = document.getElementById(answerList1[0]);
-        let q3a2 = document.getElementById(answerList1[1]);
-        let q3a3 = document.getElementById(answerList1[2]);
-        let q3a4 = document.getElementById(answerList1[3]);
+        var answerList3 = ["numbers and strings","other arrays","booleans","all of the above"]
+        buildButtons(answerList3);
+        let q3a1 = document.getElementById(answerList3[0]);
+        let q3a2 = document.getElementById(answerList3[1]);
+        let q3a3 = document.getElementById(answerList3[2]);
+        let q3a4 = document.getElementById(answerList3[3]);
         q3a1.addEventListener("click", wrongAnswer3);
         q3a2.addEventListener("click", wrongAnswer3);
         q3a3.addEventListener("click", wrongAnswer3);
@@ -134,21 +119,12 @@ function questionFour(){
 
 function fourthAnswerSet(){
         choiceList.textContent = ""
-        var answerList1 = ["commas","curly brackets","quotes","parentheses"]
-        function buildButtons() {
-                for (var i = 0; i < answerList1.length; i++) {
-                   var btn = document.createElement("button");
-                   var t = document.createTextNode(answerList1[i]);
-                   btn.appendChild(t);
-                   btn.id = answerList1[i]
-                   choiceList.appendChild(btn);
-                }
-            }
-        buildButtons();
-        let q3a1 = document.getElementById(answerList1[0]);
-        let q3a2 = document.getElementById(answerList1[1]);
-        let q3a3 = document.getElementById(answerList1[2]);
-        let q3a4 = document.getElementById(answerList1[3]);
+        var answerList4 = ["commas","curly brackets","quotes","parentheses"]
+        buildButtons(answerList4);
+        let q3a1 = document.getElementById(answerList4[0]);
+        let q3a2 = document.getElementById(answerList4[1]);
+        let q3a3 = document.getElementById(answerList4[2]);
+        let q3a4 = document.getElementById(answerList4[3]);
         q3a1.addEventListener("click", wrongAnswer4);
         q3a2.addEventListener("click", wrongAnswer4);
         q3a3.addEventListener("click", rightAnswer4);
