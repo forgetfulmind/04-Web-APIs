@@ -16,18 +16,21 @@ var timeClock = document.querySelector("#time")
 //call out id#final-score as variable for displaying final score div 
 var finalScore = document.querySelector("#final-score")
 //call out id#initials as variable for input of initials 
-var intialsInput = document.querySelector("#initials")
+var initialsInput = document.querySelector("#initials")
+//call out id#submit as variable for submit initials 
+var initialsSubmit = document.querySelector("#submit")
 
 //Highscorespage callouts:
 //call out id#highscores for high score list
 var highScores = document.querySelector("#highscores")
-              
+
+//Set Interval 
+var interval;
 
 
 //logic of pages: 
 
 //I want to use the DOM to fill the questions screen with data: 
-        //Question screen title filled with first question 
 
 //create questions array
 var quizQuestions = ["Commonly Used data types DO NOT include:",
@@ -52,16 +55,16 @@ function buildButtons() {
            choiceList.appendChild(btn);
         }
     }
-buildButtons();
-let q1a1 = document.getElementById(answerList1[0]);
-let q1a2 = document.getElementById(answerList1[1]);
-let q1a3 = document.getElementById(answerList1[2]);
-let q1a4 = document.getElementById(answerList1[3]);
-q1a1.addEventListener("click", wrongAnswer);
-q1a2.addEventListener("click", wrongAnswer);
-q1a3.addEventListener("click", rightAnswer);
-q1a4.addEventListener("click", wrongAnswer);
-}
+        buildButtons();
+        let q1a1 = document.getElementById(answerList1[0]);
+        let q1a2 = document.getElementById(answerList1[1]);
+        let q1a3 = document.getElementById(answerList1[2]);
+        let q1a4 = document.getElementById(answerList1[3]);
+        q1a1.addEventListener("click", wrongAnswer);
+        q1a2.addEventListener("click", wrongAnswer);
+        q1a3.addEventListener("click", rightAnswer);
+        q1a4.addEventListener("click", wrongAnswer);
+        }
 
 //second question and answer screen
 function questionTwo(){
@@ -152,11 +155,14 @@ function fourthAnswerSet(){
         q3a4.addEventListener("click", wrongAnswer4);
         }
 
+//START BUTTON
 //when I click the start button I want to 
 startButton.addEventListener("click", startQuiz);
 
 function startQuiz(){
         localStorage.setItem("score", 0);
+        timeClock.textContent = 60;
+        console.log("Timer Start!");
         setTimer();
         hideStart();
         showQuestions();
@@ -169,15 +175,14 @@ function hideStart(){
 function showQuestions(){
         questionScreen.className = "start"
 }
-        //fill timer with 60 seconds and start timer
+
+//Start Timer
 function setTimer(){
-        console.log("Timer Start")
-        timeClock.textContent = 60
-        let countDown = setInterval(function(){
+        interval = setInterval(function(){
                 timeClock.textContent--;
                 console.log(timeClock.textContent)
-                if(timeClock.textContent == 0) {
-                        clearInterval(countDown);
+                if(parseInt(timeClock.textContent) === 0) {
+                        clearInterval(interval);
                         finalScreen();
                 }
         },1000)
@@ -193,6 +198,9 @@ function addPoint() {
 //TIME PENALTY
 function timePenalty(){
         //subtract from running interval
+        clearInterval(interval);
+        timeClock.textContent = parseInt(timeClock.textContent) - 5;
+        setTimer();
 }
 //POP UP WRONG 
 
@@ -281,16 +289,11 @@ function wrongAnswer4(){
 //END FOURTH SET
 
 
-//Clear Timer
-function clearTimer() {
-        timeClock.textContent = 2;
-}
-
 //If all the questions are answered OR timer reaches zero I want to 
         //hide questions screen
         //show final score screen 
 function finalScreen(){
-        clearTimer();
+        clearInterval(interval);
         scoreBoard();
         questionScreen.className = "hide"
         endScreen.className = "start"
