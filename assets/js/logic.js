@@ -20,9 +20,6 @@ var initialsInput = document.querySelector("#initials")
 //call out id#submit as variable for submit initials 
 var initialsSubmit = document.querySelector("#submit")
 
-//Highscorespage callouts:
-//call out id#highscores for high score list
-var highScores = document.querySelector("#highscores")
 
 //Set Interval 
 var interval;
@@ -218,7 +215,7 @@ function wrongAnswer2(){
         questionThree();
 
 }
-//I want to subtract time from the clock 
+
         //I want to pop up a temporary text under the wrapper of "wrong!"
 //END SECOND SET
 
@@ -282,12 +279,37 @@ function scoreBoard(){
 }
 
 //When submit is pushed I want to
+initialsSubmit.addEventListener("click", userName)
         //add initials to user's score 
+function userName(){
+        initialsInput = initialsInput.value
+        console.log(initialsInput)
+        console.log(initialsInput.length)
+        if (parseInt(initialsInput.length) <= 3){
+        localStorage.setItem("userName", initialsInput)
+        window.location.href = "./highscores.html"
+        //addScore()
+        } else {
+                alert("Please use only three characters")
+                initialsInput = ""
+        }
+}
         //add all user data [initials + score] to list on highscores screen
+//function addScore() {
+//        let score = document.createElement("li")
+//        let userName = localStorage.getItem("userName")
+//        let highScore = localStorage.getItem("score")
+//        score = userName + "-" + highScore
+//        highScores.appendChild(score)
+//        clearScores.addEventListener("click", clearHighScores)
+//}
         //hide final score screen
         //go to highscores page 
 
 //On highscorepage when I click go back I go to index page
 //On highscore page when I click clear highscores it deletes list items
 
+
+//clear local storage 
+localStorage.clear();
     
