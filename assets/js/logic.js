@@ -167,6 +167,8 @@ function setTimer(){
 function addPoint() {
         let score = parseInt(localStorage.getItem("score"))
         localStorage.setItem("score", ++score);
+        rightAlert()
+
 }
 //TIME PENALTY
 function timePenalty(){
@@ -178,6 +180,11 @@ function timePenalty(){
 //POP UP WRONG 
 
 //POP UP CORRECT
+function rightAlert(){
+        let rightAlert = document.createElement('p')
+        rightAlert.textContent = "Right!"
+        questionScreen.appendChild(rightAlert)
+}
 
 //FIRST SET 
     //if the answer in first set is correct 
