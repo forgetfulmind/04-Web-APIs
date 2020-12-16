@@ -176,20 +176,39 @@ function timePenalty(){
         clearInterval(interval);
         timeClock.textContent = parseInt(timeClock.textContent) - 5;
         setTimer();
+        wrongAlert();
 }
 //POP UP WRONG 
+function wrongAlert(){
+        console.log("wrong!")
+        let wrongAlert = document.createElement('p')
+        wrongAlert.className = "feedback"
+        wrongAlert.id = "wrongAlert"
+        wrongAlert.textContent = "Wrong!"
+        console.log(wrongAlert)
+        questionScreen.appendChild(wrongAlert)
+        setTimeout(function(){
+               document.querySelector("#wrongAlert").setAttribute("class","hide")
+        },1000)
+}
 
 //POP UP CORRECT
 function rightAlert(){
+        console.log("right!")
         let rightAlert = document.createElement('p')
+        rightAlert.className = "feedback"
+        rightAlert.id = "alert"
         rightAlert.textContent = "Right!"
+        console.log(rightAlert)
         questionScreen.appendChild(rightAlert)
+        setTimeout(function(){
+               document.querySelector("#alert").setAttribute("class","hide")
+        },1000)
 }
 
 //FIRST SET 
     //if the answer in first set is correct 
 function rightAnswer(){
-        console.log("right!")
         addPoint();
         questionTwo();
 }
