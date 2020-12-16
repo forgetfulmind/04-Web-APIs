@@ -289,17 +289,18 @@ function scoreBoard(){
 initialsSubmit.addEventListener("click", userName)
         //add initials to user's score 
 function userName(){
-        initialsInput = initialsInput.value
-        console.log(initialsInput)
-        console.log(initialsInput.length)
-        if (parseInt(initialsInput.length) <= 3){
-        localStorage.setItem("userName", initialsInput)
+        initialsInputValue = initialsInput.value
+        console.log(initialsInputValue)
+        console.log(initialsInputValue.length)
+        if (parseInt(initialsInputValue.length) <= 3){
+        localStorage.setItem("userName", initialsInputValue)
   //go to highscores page 
         window.location.href = "./highscores.html"
         //addScore()
         } else {
-                alert("Please use only three characters")
-                initialsInput = ""
+                alert("Please use less than three characters")
+                initialsInput.value = ""
+
         }
 }
 
