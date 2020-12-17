@@ -19,8 +19,10 @@ var finalScore = document.querySelector("#final-score")
 var initialsInput = document.querySelector("#initials")
 //call out id#submit as variable for submit initials 
 var initialsSubmit = document.querySelector("#submit")
-
-
+//call out id#correctWav as variable for correct answer sfx
+var correctWav = document.querySelector("#correctWav")
+//call out id#correctWav as variable for correct answer sfx
+var incorrectWav = document.querySelector("#incorrectWav")
 //Set Interval 
 var interval;
 
@@ -168,6 +170,7 @@ function addPoint() {
         let score = parseInt(localStorage.getItem("score"))
         localStorage.setItem("score", ++score);
         rightAlert()
+        playSound(correctWav)
 
 }
 //TIME PENALTY
@@ -177,6 +180,7 @@ function timePenalty(){
         timeClock.textContent = parseInt(timeClock.textContent) - 5;
         setTimer();
         wrongAlert();
+        playSound(incorrectWav)
 }
 //POP UP WRONG 
 function wrongAlert(){
@@ -204,6 +208,11 @@ function rightAlert(){
         setTimeout(function(){
                document.querySelector("#alert").setAttribute("class","hide")
         },1000)
+}
+
+//PLAY SOUND
+function playSound(squid){
+        squid.play();
 }
 
 //FIRST SET 
