@@ -18,7 +18,7 @@ function addScore() {
     let score = document.createElement('li')
     let userName = localStorage.getItem("userName")
     let highScore = localStorage.getItem("score")
-    if (userName != "null" && highScore != "null"){
+    if (userName && highScore){
     score.textContent = userName + " - " + highScore
     highScores.appendChild(score)
     } 
